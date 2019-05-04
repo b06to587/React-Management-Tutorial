@@ -1,5 +1,5 @@
 ## Manangement System
-본프로젝트는 React 강의를 따라서 만들어진 시스템입니다 !!
+본프로젝트는 React 강의를 따라서 만들어진 시스템입니다 !! 참고용
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
