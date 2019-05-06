@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Paper from '@material-ui/core/Paper'
 import Customer from './components/Customer';
