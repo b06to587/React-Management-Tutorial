@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Paper from '@material-ui/core/Paper'
 import Customer from './components/Customer';
+import CustomerAdd from './components/CustomerAdd';
 import Table from '@material-ui/core/Table'
 import TableHead from '@material-ui/core/TableHead'
 import TableBody from '@material-ui/core/TableBody'
@@ -27,9 +28,22 @@ const styles = theme => ({
 
 class App extends Component {
 
-  state ={
-    customers : "",
-    completed : 0
+  constructor(props){
+    super(props);
+    this.state ={
+      customers: '',
+      completed :0
+    }
+  }
+
+  stateRefresh= () =>{
+    this.setState({
+      customers :'',
+      completed : 0
+    });
+    this.callApi()
+    .then(res =>this.setState({customers : res}))
+    .catch(err => console.log(err))
   }
 
   componentDidMount(){
@@ -53,8 +67,9 @@ class App extends Component {
   render(){
     const {classes} = this.props;
     return (
-      <Paper className = {classes.root}>
-        <Table className = {classes.table}>
+        <div>
+          <Paper className = {classes.root}>
+                  <Table className = {classes.table}>
                 <TableHead>
                 <TableRow>
                     <TableCell>번호</TableCell>
@@ -75,12 +90,14 @@ class App extends Component {
                 </TableRow>
                 }
             </TableBody>
-        </Table>
-      
-    </Paper>
+         </Table>
+        </Paper>
+        <CustomerAdd stateRefresh ={this.stateRefresh}/>
+      </div>
     );
   }
  
 }
 
 export default withStyles(styles)(App);
+
